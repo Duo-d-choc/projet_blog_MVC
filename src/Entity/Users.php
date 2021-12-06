@@ -11,7 +11,6 @@ class Users
 
 
 
-
     /**
      * @return int
      */
@@ -62,8 +61,10 @@ class Users
 
 
 
-    public function __construct($id, $name)
+    public function __construct($id, $name, $statut)
     {
-
+        $this->setId($id);
+        $this->setName($name);
+        $this->setStatut($statut);
     }
 }
