@@ -1,1 +1,1 @@
-<h1>Vous vous êtes planté !</h1>
+<h1> La page que vous recherchez n'existe pas. </h1>

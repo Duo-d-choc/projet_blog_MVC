@@ -15,25 +15,34 @@ class PostManager extends BaseManager
     //public function getAllPosts($pdo): array
     public function getAllPosts(int $number = null): array
     {
-        if($number){
-            $query = this->db->prepare('SELECT * FROM Article ORDER BY id DESC LIMIT :limit');
-            $query->bindValue(':limit', $number, \PDO::PARAM_INT);
-            $query->execute();
-        } else {
-            $query = $this->db->query('SELECT * FROM Article ORDER BY id DESC');
-        }
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
+        $requete = ('SELECT * FROM Article;');
+        $reponse = $this->pdo->query($requete);
 
-        return $query->fetchAll();
+        return $reponse;
+
+        //if($number){
+        //    $query = this->db->prepare('SELECT * FROM Article ORDER BY id DESC LIMIT :limit');
+        //    $query->bindValue(':limit', $number, \PDO::PARAM_INT);
+        //    $query->execute();
+        //} else {
+        //    $query = $this->db->query('SELECT * FROM Article ORDER BY id DESC');
+        //}
+        //$query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
         //$requete = ('SELECT * FROM Article;');
         //$reponse = $this->pdo->query($requete);
 
-        //return $reponse;
+        //return $query->fetchAll();
     }
 
     public function getPostById(int $id): Post
     {
-        // TODO - Posts by Id
+        $requete = ('SELECT * FROM Article WHERE id = :id');
+        $requete->bindValue(':id', $id, \PDO::PARAM_INT);
+        $requete->execute();
+        $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
+        $reponse = $requete->fetch();
+
+        return $reponse;
     }
 
     /**

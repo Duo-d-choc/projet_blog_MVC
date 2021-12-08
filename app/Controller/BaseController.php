@@ -1,9 +1,5 @@
 <?php
 
-// BASE CONTROLLER VA PERMETTRE
-
-
-
 namespace App\Controller;
 
 abstract class BaseController
@@ -30,7 +26,6 @@ abstract class BaseController
         foreach ($arguments as $key => $value) {
             ${$key} = $value;
         }
-
 
         ob_start();
         require $view;

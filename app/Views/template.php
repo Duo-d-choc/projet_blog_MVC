@@ -17,22 +17,27 @@
             <h2>Notre beau CMS</h2>
 
             <ul class="nav">
-                <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-                <li><a href="#" class="nav-link px-2 text-white">About</a></li>
+                <li><a href="#" class="nav-link px-2">Home</a></li>
+                <li><a href="#" class="nav-link px-2">Mon compte</a></li>
+                <li><a href="#" class="nav-link px-2">Admin</a></li>
             </ul>
+
+            <br>
 
             <div class="text-end">
                 <button type="button" class="btn btn-outline-light me-2">Login</button>
                 <button type="button" class="btn btn-warning">Sign-up</button>
                 <button type="button" class="btn btn-warning">Log out</button>
             </div>
+
+            <br>
         </div>
     </div>
 </header>
 
+<div>
+    <?= $content; ?>
+</div>
 <!--
 <?//php if (\App\Fram\Utils\Flash::hasFlash('success')): ?>
     <div class="alert alert-success" role="alert">
@@ -46,10 +51,6 @@
     </div>
 <?//php endif; ?>
 -->
-
-<div class="container">
-    <?= $content; ?>
-</div>
 
 </body>
 </html>
