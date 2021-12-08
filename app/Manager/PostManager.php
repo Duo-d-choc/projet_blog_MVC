@@ -11,6 +11,7 @@ class PostManager extends BaseManager
      * @param int|null $number
      * @return array
      */
+
     //public function getAllPosts($pdo): array
     public function getAllPosts(int $number = null): array
     {
