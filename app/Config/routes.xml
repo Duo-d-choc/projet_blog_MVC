@@ -6,7 +6,8 @@
     <route path="article" action="article" controller="PostController" params="id"/>
 
     <!-- admin -->
-    <!--<route p="admin" controller="AdminController" action=""/> -->
+    <route path="account" action="account" controller="AdminController"/>
+    <route path="admin" action="admin" controller="AdminController"/>
 
     <!-- security-->
     <!-- <route p="login" controller="SecurityController" action="login"/>
