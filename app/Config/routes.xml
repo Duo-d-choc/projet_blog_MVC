@@ -3,14 +3,14 @@
 <routes>
     <!--front-->
     <route path="/" action="index" controller="PostController"/>
-    <route path="show" action="show" controller="PostController" params="id"/>
-    <route path="author" action="author" controller="PostController"/>
+    <route path="article" action="show" controller="PostController" params="id"/>
 
     <!-- admin -->
-
+    <route p="admin" controller="AdminController" action=""/>
 
     <!-- security-->
-
-
+    <route p="login" controller="SecurityController" action="login"/>
+    <route p="logout" controller="SecurityController" action="logout"/>
+    <route p="signup" controller="SecurityController" action="signup"/>
 
 </routes>

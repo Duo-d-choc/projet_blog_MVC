@@ -7,7 +7,7 @@ class Users
 
     private int $id;
     private string $name;
-    private string $statut;
+    private string $status;
 
 
 
@@ -46,25 +46,25 @@ class Users
     /**
      * @return string
      */
-    public function getStatut(): string
+    public function getStatus(): string
     {
-        return $this->statut;
+        return $this->status;
     }
 
     /**
      * @param string $statut
      */
-    public function setStatut(string $statut): void
+    public function setStatut(string $status): void
     {
-        $this->statut = $statut;
+        $this->status = $status;
     }
 
 
 
-    public function __construct($id, $name, $statut)
+    public function __construct($id, $name, $status)
     {
         $this->setId($id);
         $this->setName($name);
-        $this->setStatut($statut);
+        $this->setStatut($status);
     }
 }
