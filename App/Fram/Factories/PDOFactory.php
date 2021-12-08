@@ -4,7 +4,7 @@ namespace App\Fram\Factories;
 
 class PDOFactory
 {
-    private static string $dsn = 'mysql:host=localhost:3306';
+    private static string $dsn = 'mysql:host=localhost:3306;dbname=personnages';
     private static string $userName = 'root';
     private static string $password = '';
 
