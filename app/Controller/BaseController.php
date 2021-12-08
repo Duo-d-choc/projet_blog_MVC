@@ -1,5 +1,9 @@
 <?php
 
+// BASE CONTROLLER VA PERMETTRE
+
+
+
 namespace App\Controller;
 
 abstract class BaseController
@@ -22,6 +26,7 @@ abstract class BaseController
     {
         $view = $this->viewsDir . $template;
 
+        //pour chaque argument : clé --> valeur
         foreach ($arguments as $key => $value) {
             ${$key} = $value;
         }
