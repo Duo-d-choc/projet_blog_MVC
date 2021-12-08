@@ -11,10 +11,10 @@ class PostManager extends BaseManager
     /**
      * @return Post[]
      */
-    public function getAllPosts($db): array
+    public function getAllPosts($pdo): array
     {
         $requete = ('SELECT * FROM article;');
-        $reponse = $this->db->query($requete);
+        $reponse = $this->pdo->query($requete);
 
         return $reponse;
     }
