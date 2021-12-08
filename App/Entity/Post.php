@@ -92,7 +92,6 @@ class Post
 
 
 
-
     public function __construct($id, $author,$titre, $date, $content)
     {
         $this->setId($id);
