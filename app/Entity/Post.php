@@ -5,7 +5,7 @@ namespace App\Entity;
 class Post
 {
     private int $id;
-    private DATETIME $date;
+    private \DateTime $date;
     private string $titre;
     private string $author;
     private string $content;
@@ -27,17 +27,17 @@ class Post
     }
 
     /**
-     * @return DATETIME
+     * @return \DateTime
      */
-    public function getDate(): DATETIME
+    public function getDate():\DateTime
     {
         return $this->date;
     }
 
     /**
-     * @param DATETIME $date
+     * @param \DateTime $date
      */
-    public function setDate(DATETIME $date): void
+    public function setDate(\DateTime $date): void
     {
         $this->date = $date;
     }
