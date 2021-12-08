@@ -17,7 +17,7 @@ class Router
         foreach ($routes as $route){
             if ($path === $route->getAttribute('path')){
                 $controllerClass = 'Controller\\' . $route->getAttribute('controller');
-                $action = $route->getAtrribute('action');
+                $action = $route->getAttribute('action');
                 $params = [];
                 if ($route->hasAttribute('params')){
                     $keys = explode(',',$route->getAttribute('params'));

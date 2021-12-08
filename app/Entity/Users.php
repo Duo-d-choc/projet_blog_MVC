@@ -9,8 +9,6 @@ class Users
     private string $name;
     private string $status;
 
-
-
     /**
      * @return int
      */
@@ -52,9 +50,9 @@ class Users
     }
 
     /**
-     * @param string $statut
+     * @param string $status
      */
-    public function setStatut(string $status): void
+    public function setStatus(string $status): void
     {
         $this->status = $status;
     }
@@ -65,6 +63,6 @@ class Users
     {
         $this->setId($id);
         $this->setName($name);
-        $this->setStatut($status);
+        $this->setStatus($status);
     }
 }
