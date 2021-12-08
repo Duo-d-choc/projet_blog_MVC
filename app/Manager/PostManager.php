@@ -11,10 +11,12 @@ class PostManager extends BaseManager
     /**
      * @return Post[]
      */
-    public function getAllPosts(): array
+    public function getAllPosts($db): array
     {
+        $requete = ('SELECT * FROM article;');
+        $reponse = $this->db->query($requete);
 
-        return [];
+        return $reponse;
     }
 
     public function getPostById(int $id): Post
