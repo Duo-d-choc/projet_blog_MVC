@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use App\Fram\Factories\PDOFactory;
+
 class Post
 {
     private int $id;
@@ -100,6 +102,15 @@ class Post
         $this->setTitre($titre);
         $this->setDate($date);
         $this->setContent($content);
+    }
+
+    public function afficherArticles(){
+        $reponse = getAllPosts(PDOFactory::getMysqlConnection());
+        while($data = $reponse->fetch()){
+            echo '<div> <span>Pseudo : ' . $data['id_user'] . '<br/>';
+            echo 'Titre : ' . $data['title'] . '<br/>';
+            echo 'Contenu : ' . $data['content'] . '</span></div>';
+        }
     }
 
 }
