@@ -14,10 +14,7 @@
 <header>
     <div>
         <div>
-            <a href="/">
-                <!-- Mettre le logo que l'on veut -->
-                <img src="https://img2.freepng.fr/20180407/xse/kisspng-symbol-computer-icons-blogger-logo-blog-5ac91fc750c101.6716503415231303113308.jpg">
-            </a>
+            <h2>Notre beau CMS</h2>
 
             <ul class="nav">
                 <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
@@ -36,17 +33,19 @@
     </div>
 </header>
 
-<?php if (\App\Fram\Utils\Flash::hasFlash('success')): ?>
+<!--
+<?//php if (\App\Fram\Utils\Flash::hasFlash('success')): ?>
     <div class="alert alert-success" role="alert">
         <?= \App\Fram\Utils\Flash::getFlash('success'); ?>
     </div>
-<?php endif; ?>
+<?//php endif; ?>
 
-<?php if (\App\Fram\Utils\Flash::hasFlash('alert')): ?>
+<?//php if (\App\Fram\Utils\Flash::hasFlash('alert')): ?>
     <div class="alert alert-danger" role="alert">
         <?= \App\Fram\Utils\Flash::getFlash('alert'); ?>
     </div>
-<?php endif; ?>
+<?//php endif; ?>
+-->
 
 <div class="container">
     <?= $content; ?>

@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Fram\Factories\PDOFactory;
+
 class ErrorController extends BaseController
 {
     public function executeError404()
