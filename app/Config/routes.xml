@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <routes>
+    <!--front-->
     <route path="/" action="index" controller="PostController"/>
     <route path="show" action="show" controller="PostController" params="id"/>
     <route path="author" action="author" controller="PostController"/>
+
+    <!-- admin -->
+
+
+    <!-- security-->
 </routes>
