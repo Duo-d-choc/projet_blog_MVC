@@ -30,4 +30,10 @@ class PostController extends BaseController
 
         return $this->render('article.php', ['post_article' => $post_article], 'Article');
     }
+
+    public function executeCreateArticle (){
+        $manager = new PostManager(PDOFactory::getMysqlConnection());
+
+        return $this->render('create_article.php', [], 'Créer article');
+    }
 }

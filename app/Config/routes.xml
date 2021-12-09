@@ -4,15 +4,15 @@
     <!--front-->
     <route path="" action="index" controller="PostController"/>
     <route path="article" action="article" controller="PostController" params="id"/>
-    <route path="createArticle" action="createArticle" controller="PostController"/>
+    <route path="create_article" action="createArticle" controller="PostController"/>
 
     <!-- admin -->
     <route path="account" action="account" controller="UsersController"/>
     <route path="admin" action="admin" controller="UsersController"/>
 
     <!-- security-->
-    <route path="login" action="login" controller="SecurityController" />
+    <route path="login" action="login" controller="SecurityController"/>
+    <route path="create_account" action="createAccount" controller="SecurityController"/>
     <!--<route p="logout" controller="SecurityController" action="logout"/>-->
-    <route path="createAccount" action="createAccount" controller="SecurityController"/>
 
  </routes>
