@@ -2,7 +2,7 @@
 
 <routes>
     <!--front-->
-    <route path="/" action="index" controller="PostController"/>
+    <route path="" action="index" controller="PostController"/>
     <route path="article" action="article" controller="PostController" params="id"/>
 
     <!-- admin -->
