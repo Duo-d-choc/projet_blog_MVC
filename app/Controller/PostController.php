@@ -13,8 +13,7 @@ class PostController extends BaseController
     public function executeIndex (int $number = 2){
         $manager = new PostManager(PDOFactory::getMysqlConnection());
         $articles = $manager->getAllPosts($number);
-        //echo '<pre>';
-        //var_dump($articles); die;
+
 
         $this->render('home.php', ['articles' => $articles], 'Homepage');
     }
