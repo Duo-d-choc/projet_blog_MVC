@@ -4,7 +4,7 @@ namespace App\Fram\Factories;
 
 class PDOFactory
 {
-    private static string $dsn = "mysql:host=db;dbname:my_db";
+    private static string $dsn = "mysql:host=db;dbname=my_db";
     private static string $username ='root';
     private static string $password = 'example';
 
@@ -13,7 +13,8 @@ class PDOFactory
             return new \PDO(self::$dsn, self::$username, self::$password);
         }
         catch(\PDOException $e){
-            return "Connection failed: " . $e->getMessage();
+            //return "Connection failed: " . $e->getMessage();
+            return false;
         };
     }
 }
