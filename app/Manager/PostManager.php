@@ -13,15 +13,9 @@ class PostManager extends BaseManager
      * @return array
      */
 
-    //public function getAllPosts($pdo): array
-    public function getAllPosts(int $number = null): array
+    public function getAllPosts(int $number): array
     {
         $sql = 'SELECT * FROM Article ';
-        $sth = $this->pdo->prepare($sql);
-        var_dump($sth);
-        $res  = $sth->execute();
-        var_dump($res);
-        die;
 
         if($number){
             $query = $this->pdo->prepare($sql .'LIMIT :limit');
@@ -31,9 +25,9 @@ class PostManager extends BaseManager
             $query = $this->pdo->prepare($sql);
             $query->execute();
         }
-        //$query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
-        if ($query !== false){
-            var_dump($query->fetchAll());die();
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Post');
+        if ($query){
+            //var_dump($query->fetchAll());die();
             return $query->fetchAll();
         }
         return [$query];
@@ -41,13 +35,12 @@ class PostManager extends BaseManager
 
     public function getPostById(int $id): Post
     {
-        $requete = $this->pdo->prepare('SELECT * FROM Article WHERE id=:id');
-        $requete->bindValue(':id', $id, \PDO::PARAM_INT);
-        $requete->execute();
-        $requete->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
-        $reponse = $requete->fetch();
+        $query = $this->pdo->prepare('SELECT * FROM Article WHERE id=:id');
+        $query->bindValue(':id', $id, \PDO::PARAM_INT);
+        $query->execute();
+        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Post');
 
-        return $reponse;
+        return $query->fetch();
     }
 
     /**
