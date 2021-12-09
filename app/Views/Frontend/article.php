@@ -26,7 +26,7 @@
             </div>
             <div>
                 <a class="flex items-center" href="#">
-                    <svg class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="mx-4 w-10 h-10 object-cover rounded-full hidden sm:block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
 
@@ -44,14 +44,15 @@
     <div class="antialiased mx-auto max-w-screen-sm">
 
         <!-- Tous les commentaire -->
-        <!-- Placer le foreach ici -->
+        <?php
+        foreach ($comments as $comment) :
+        ?>
         <div class="space-y-4 mb-20">
-
 
             <!-- Un commentaire -->
             <div class="flex">
                 <div class="flex-shrink-0 mr-3">
-                    <svg class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
@@ -60,9 +61,7 @@
                     <strong>Utilisateur Moi</strong> <span class="text-xs text-gray-400">10/10/2021 à 11:11</span>
                     <!-- Commentaire de l'u -->
                     <p class="text-sm">
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr,
-                        sed diam nonumy eirmod tempor invidunt ut labore et dolore
-                        magna aliquyam erat, sed diam voluptua.
+                        <?= $comment->getContent(); ?>
                     </p>
 
                     <div class="flex mt-5">
@@ -72,16 +71,12 @@
                         <button type="button" class="border border-red-500 text-red-500 rounded-md px-2 py-1 m-2 mb-1 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">
                             supprimer
                         </button>
-
-
                     </div>
-
                 </div>
-
             </div>
 
-
         </div>
+        <?php endforeach ?>
 
 
         <!-- Laisser un commentaire -->
@@ -89,7 +84,7 @@
         <div class="bg-white p-2 pt-4 rounded shadow-lg mb-20">
             <div class="flex ml-3 items-center">
                 <div class="flex flex-shrink-0 mr-3">
-                    <svg class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
