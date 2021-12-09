@@ -4,9 +4,10 @@ namespace App\Entity;
 
 class Users
 {
-
     private int $id;
-    private string $name;
+    private string $pseudo;
+    private string $email;
+    private string $password;
     private string $status;
 
     /**
@@ -28,17 +29,49 @@ class Users
     /**
      * @return string
      */
-    public function getName(): string
+    public function getPseudo(): string
     {
-        return $this->name;
+        return $this->pseudo;
     }
 
     /**
-     * @param string $name
+     * @param string $pseudo
      */
-    public function setName(string $name): void
+    public function setPseudo(string $pseudo): void
     {
-        $this->name = $name;
+        $this->pseudo = $pseudo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     */
+    public function setEmail(string $email): void
+    {
+        $this->email = $email;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param string $password
+     */
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
     }
 
     /**
@@ -59,10 +92,4 @@ class Users
 
 
 
-    public function __construct($id, $name, $status)
-    {
-        $this->setId($id);
-        $this->setName($name);
-        $this->setStatus($status);
-    }
 }
