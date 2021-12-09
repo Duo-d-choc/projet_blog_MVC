@@ -7,10 +7,20 @@ use App\Fram\Factories\PDOFactory;
 class Post
 {
     private int $id;
-    private \DateTime $date;
-    private string $titre;
-    private string $author;
+    private $date;
+    //private \DateTime $date;
+    private string $title;
+    private int $id_user;
     private string $content;
+
+    //public function __construct($id, $author, $titre, $date, $content)
+    //{
+    //    $this->setId($id);
+    //    $this->setAuthor($author);
+    //    $this->setTitre($titre);
+    //    $this->setDate($date);
+    //    $this->setContent($content);
+    //}
 
     /**
      * @return int
@@ -31,9 +41,9 @@ class Post
     /**
      * @return \DateTime
      */
-    public function getDate():\DateTime
+    public function getDate(): \DateTime
     {
-        return $this->date;
+        return \DateTime($this->date);
     }
 
     /**
@@ -47,33 +57,33 @@ class Post
     /**
      * @return string
      */
-    public function getTitre(): string
+    public function getTitle(): string
     {
-        return $this->titre;
+        return $this->title;
     }
 
     /**
      * @param string $titre
      */
-    public function setTitre(string $titre): void
+    public function setTitle(string $title): void
     {
-        $this->titre = $titre;
+        $this->title = $title;
     }
 
     /**
      * @return string
      */
-    public function getAuthor(): string
+    public function getIdUser(): string
     {
-        return $this->author;
+        return $this->id_user;
     }
 
     /**
      * @param string $author
      */
-    public function setAuthor(string $author): void
+    public function setIdUser(string $id_user): void
     {
-        $this->author = $author;
+        $this->id_user = $id_user;
     }
 
     /**
@@ -90,27 +100,6 @@ class Post
     public function setContent(string $content): void
     {
         $this->content = $content;
-    }
-
-
-
-
-    public function __construct($id, $author,$titre, $date, $content)
-    {
-        $this->setId($id);
-        $this->setAuthor($author);
-        $this->setTitre($titre);
-        $this->setDate($date);
-        $this->setContent($content);
-    }
-
-    public function afficherArticles(){
-        $reponse = getAllPosts(PDOFactory::getMysqlConnection());
-        while($data = $reponse->fetch()){
-            echo '<div> <span>Pseudo : ' . $data['id_user'] . '<br/>';
-            echo 'Titre : ' . $data['title'] . '<br/>';
-            echo 'Contenu : ' . $data['content'] . '</span></div>';
-        }
     }
 
 }

@@ -12,21 +12,23 @@ class PostController extends BaseController
 {
     public function executeIndex (int $number = 2){
         $manager = new PostManager(PDOFactory::getMysqlConnection());
-        $index = $manager->getAllPosts();
+        $articles = $manager->getAllPosts($number);
+        //echo '<pre>';
+        //var_dump($articles); die;
 
-        return $this->render('home.php', $index, 'Homepage');
+        $this->render('home.php', ['articles' => $articles], 'Homepage');
     }
 
     public function executeArticle (){
         $manager = new PostManager(PDOFactory::getMysqlConnection());
         //$article = $manager->getPostById($this->params['id']);
-        $article = $manager->getPostById(1);
+        $post_article = $manager->getPostById(1);
 
-        if(!article){
+        if(!$post_article){
             header('Location: /');
             exit();
         }
 
-        return $this->render('article.php', ['article' => $article], $article->getTitle());
+        return $this->render('article.php', ['article' => $post_article], 'Article');
     }
 }
