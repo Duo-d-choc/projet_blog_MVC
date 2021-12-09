@@ -19,7 +19,8 @@ class PostController extends BaseController
 
     public function executeArticle (){
         $manager = new PostManager(PDOFactory::getMysqlConnection());
-        $article = $manager->getPostById($this->params['id']);
+        //$article = $manager->getPostById($this->params['id']);
+        $article = $manager->getPostById(1);
 
         if(!article){
             header('Location: /');
