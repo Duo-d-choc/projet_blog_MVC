@@ -12,16 +12,10 @@ class PostManager extends BaseManager
      * @param int|null $number
      * @return array
      */
-
-    //public function getAllPosts($pdo): array
+    
     public function getAllPosts(int $number = null): array
     {
         $sql = 'SELECT * FROM Article ';
-        $sth = $this->pdo->prepare($sql);
-        var_dump($sth);
-        $res  = $sth->execute();
-        var_dump($res);
-        die;
 
         if($number){
             $query = $this->pdo->prepare($sql .'LIMIT :limit');
@@ -33,7 +27,6 @@ class PostManager extends BaseManager
         }
         //$query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'Entity\Post');
         if ($query !== false){
-            var_dump($query->fetchAll());die();
             return $query->fetchAll();
         }
         return [$query];
