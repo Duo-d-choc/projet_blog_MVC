@@ -29,7 +29,6 @@ class PostManager extends BaseManager
         $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Post');
         if ($query){
             //var_dump($query->fetchAll());die();
-
             return $query->fetchAll();
         }
         return [$query];

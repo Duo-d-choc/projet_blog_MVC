@@ -43,7 +43,7 @@ class Post
      */
     public function getDate(): \DateTime
     {
-        return \DateTime($this->date);
+        return $this->date;
     }
 
     /**
