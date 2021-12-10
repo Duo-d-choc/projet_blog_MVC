@@ -49,6 +49,7 @@
         foreach ($comments as $comment) :
         ?>
         <div class="space-y-4 mb-20">
+            <?php /* @var $comment \App\Entity\Comment */ ?>
 
             <!-- Un commentaire -->
             <div class="flex">
@@ -59,8 +60,8 @@
                 </div>
                 <div class="flex-1 border rounded-lg px-4 py-2 sm:px-6 sm:py-4 leading-relaxed">
                     <!-- Nom de l'utilisateur + date de publication -->
-                    <strong>Utilisateur Moi</strong> <span class="text-xs text-gray-400">10/10/2021 à 11:11</span>
-                    <!-- Commentaire de l'u -->
+                    <strong><?= $comment->getCommentAuthor()->getPseudo();?></strong> <span class="text-xs text-gray-400"><?= $comment->getDateObject()->format('j M Y G:i')?></span>
+                    <!-- Commentaire de l'utilisateur -->
                     <p class="text-sm">
                         <?= $comment->getContent(); ?>
                     </p>
