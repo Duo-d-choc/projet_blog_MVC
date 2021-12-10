@@ -26,12 +26,12 @@ class PostManager extends BaseManager
             $query = $this->pdo->prepare($sql);
             $query->execute();
         }
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Post');
-        if ($query){
-            //var_dump($query->fetchAll());die();
-            return $query->fetchAll();
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $result = [];
+        foreach ($query->fetchAll() as $data) {
+            $result[] = new Post($data);
         }
-        return [$query];
+        return $result;
     }
 
     public function getPostById(int $id): Post
@@ -39,9 +39,10 @@ class PostManager extends BaseManager
         $query = $this->pdo->prepare('SELECT * FROM Article WHERE id=:id');
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Post');
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
 
-        return $query->fetch();
+        $res = $query->fetch();
+        return new Post($res);
     }
 
     /**
