@@ -11,7 +11,7 @@ use App\Fram\Factories\PDOFactory;
 
 class PostController extends BaseController
 {
-    public function executeIndex (int $number = 2){
+    public function executeIndex (int $number = 5){
         $manager = new PostManager(PDOFactory::getMysqlConnection());
         $articles = $manager->getAllPosts($number);
 
