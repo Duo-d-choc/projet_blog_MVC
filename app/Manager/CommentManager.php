@@ -47,18 +47,22 @@ class CommentManager extends BaseManager
      * @param int $id
      * @return bool
      */
-    public function createComment($id_article, $content): bool
+    public function createComment(Comment $comment): bool
     {
-        $date = date('j M Y G:i');
-        $sql2 = 'INSERT INTO Comment(id, id_article, id_user, content, date) VALUES
-    (:id, :id_article, :id_user, :content, :`date`)';
+        $id_article = $comment->getId_article();
+        $id_user = $comment->getId_user();
+        $content = $comment->getContent();
+        $date = $comment->getDate();
+
+        $sql = 'INSERT INTO Comment(id_article, id_user, content) VALUES
+    (:id_article, :id_user, :content)';
         $query = $this->pdo->prepare($sql);
         $query->bindValue(':id_article', $id_article, \PDO::PARAM_INT);
-        $query->bindValue(':content', $content, \PDO::PARAM_INT);
-        $query->bindValue(':date', $date, \PDO::PARAM_STR);
-        $query->execute();
+        $query->bindValue(':id_user', $id_user, \PDO::PARAM_INT);
+        $query->bindValue(':content', $content, \PDO::PARAM_STR);
 
-        return true;
+        return $query->execute();
+
     }
 
     /**

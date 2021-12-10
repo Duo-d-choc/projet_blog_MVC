@@ -83,7 +83,8 @@
 
         <!-- Laisser un commentaire -->
 
-        <form action="create-comment" method="post" class="bg-white p-2 pt-4 rounded shadow-lg mb-20">
+        <form action="/create_comment" method="post" class="bg-white p-2 pt-4 rounded shadow-lg mb-20">
+
             <div class="flex ml-3 items-center">
                 <div class="flex flex-shrink-0 mr-3">
                     <svg class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
