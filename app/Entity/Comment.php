@@ -3,15 +3,25 @@
 namespace App\Entity;
 
 use App\Fram\Factories\PDOFactory;
+use App\Manager\UsersManager;
 
 class Comment
 {
     private int $id;
     private int $id_user;
-    private $date;
-    //private \DateTime $date;
+    private \DateTime $date;
     private int $id_article;
     private string $content;
+
+    public function __construct(array $data = [])
+    {
+        foreach ($data as $key => $value) {
+            $setter = 'set' . ucfirst($key);
+            if (is_callable([$this, $setter])) {
+                $this->$setter($value);
+            }
+        }
+    }
 
     /**
      * @return int
@@ -32,7 +42,7 @@ class Comment
     /**
      * @return int
      */
-    public function getIdUser(): int
+    public function getId_user(): int
     {
         return $this->id_user;
     }
@@ -40,31 +50,40 @@ class Comment
     /**
      * @param int $id_user
      */
-    public function setIdUser(int $id_user): void
+    public function setId_user(int $id_user): void
     {
         $this->id_user = $id_user;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getDate()
+    public function getDate(): string
+    {
+        return $this->date->format('Y-m-d H:m:s');
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateObject(): \DateTime
     {
         return $this->date;
     }
 
     /**
-     * @param mixed $date
+     * @param string $mySqlDate
+     * @throws \Exception
      */
-    public function setDate($date): void
+    public function setDate(string $mySqlDate): void
     {
-        $this->date = $date;
+        $this->date = new \DateTime($mySqlDate);
     }
 
     /**
      * @return int
      */
-    public function getIdArticle(): int
+    public function getId_article(): int
     {
         return $this->id_article;
     }
@@ -72,7 +91,7 @@ class Comment
     /**
      * @param int $id_article
      */
-    public function setIdArticle(int $id_article): void
+    public function setId_article(int $id_article): void
     {
         $this->id_article = $id_article;
     }
@@ -91,5 +110,11 @@ class Comment
     public function setContent(string $content): void
     {
         $this->content = $content;
+    }
+
+    public function getCommentAuthor(): Users
+    {
+        $userManager = new UsersManager(PDOFactory::getMysqlConnection());
+        return $userManager->getUserById($this->id_user);
     }
 }
