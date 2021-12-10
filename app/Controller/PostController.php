@@ -40,6 +40,7 @@ class PostController extends BaseController
         return $this->render('create_article.php', [], 'Créer article');
     }
 
+
     public function executeDeleteArticle (int $number = 5){
         $manager = new postManager(PDOFactory::getMysqlConnection());
         $delete_article = $manager->deletePostById($this->params['id']);
@@ -54,6 +55,7 @@ class PostController extends BaseController
 
     public function executeCreateComment(){
         $manager = new commentManager(PDOFactory::getMysqlConnection());
+        $postId = $manager->getCommentById(intval($_POST['post_article']))->getId_article();
         $comment = new Comment([
             'id_user' => "1",
             'date' => 'now',
@@ -61,9 +63,14 @@ class PostController extends BaseController
             'content' => $_POST['content']
         ]);
 
-
-
         $create_comment = $manager->createComment($comment);
+
+        if ($create_comment){
+            return header('Location: /article/' . $postId);
+        } else {
+            return "<script>alert('Commentaire non créé')</script>";
+        }
+
     }
 
     public function executeDeleteComment (){
