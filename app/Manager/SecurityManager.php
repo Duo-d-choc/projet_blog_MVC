@@ -27,31 +27,24 @@ class SecurityManager
 
     }
 
-    public static function createAccount(array $data){
+    public function createAccount(array $data){
 
+        $sql = 'INSERT INTO `User` (pseudo, email, password) VALUES (:pseudo, :email, :password, "standart")';
+        $request = $pdo->prepare($sql);
 
-        if( ( isset($_POST['pseudo']) && $_POST['pseudo'] != NULL )  &&  ( isset($_POST['mdp']) && $_POST['mdp'] != NULL )   &&  ( isset($_POST['mdp2'])  && $_POST['mdp2'] != NULL )         ){
+        if( ( isset($data['pseudo']) && $data['pseudo'] != NULL )  &&  ( isset($data['password']) && $data['password'] != NULL ) ){
 
-            //if($_POST['mdp'] === $_POST['mdp2']){
-              //$hash = password_hash( $_POST['mdp'], PASSWORD_DEFAULT);
-              //echo $hash;
-                //$requete->execute(array(
-                //'pseudo' => htmlspecialchars($_POST['pseudo']),
-                //'mot_de_passe' =>  htmlspecialchars($hash)
-                //));
+            $hash = password_hash( $data['password'], PASSWORD_DEFAULT);
+            var_dump($hash);
+            $request->execute(array(
+                'pseudo' => htmlspecialchars($data['pseudo']),
+                'email' => htmlspecialchars($data['email']),
+                'mdp' =>  htmlspecialchars($hash)
+                ));
+            return true;
 
-                header('Location: index.php');
-                exit;
-
-            }else{
-                echo "Vos mots de passes ne correspondent pas !";
-            }
-
-
-            // Si manque un élément
-        }else{
-            return "Vous n'avez pas rempli tous les éléments";
         }
+        return false;
 
 
 
