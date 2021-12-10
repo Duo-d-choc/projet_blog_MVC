@@ -14,13 +14,10 @@ class SecurityController extends BaseController
 {
     public function executeLogin (){
 
-
-        $_SESSION['token'] = SecurityManager::connexion(PDOFactory::getMysqlConnection());
-
-        if ($_SESSION['token']){
-
-            $this->render('login.php', [], 'Connexion');
-        }
+        $connexion = new SecurityManager();
+        $pdo = PDOFactory::getMysqlConnection();
+        $connexion->connexion($_POST, $pdo);
+        $this->render('login.php', [], 'Connexion');
 
     }
 
@@ -29,7 +26,7 @@ class SecurityController extends BaseController
 
         $recup = new SecurityManager();
         $recup->createAccount($_POST, $pdo);
-        //var_dump($_POST);
+
 
 
         $this->render('create_account.php', [], 'Créer un compte');

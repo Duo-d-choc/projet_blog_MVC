@@ -1,5 +1,3 @@
-<?php var_dump($_POST); ?>
-
 <div class="h-screen bg-100 flex justify-center items-center">
     <div class="lg:w-2/5 md:w-1/2 w-2/3">
         <form class="bg-white p-10 rounded-lg shadow-lg min-w-full" action="" method="POST">
