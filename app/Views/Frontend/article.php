@@ -2,10 +2,11 @@
 
     <!-- Partie post -->
 
+    <?php /* @var $post_article \App\Entity\Post */ ?>
     <div class="max-w-4xl px-10 my-4 py-6 bg-white rounded-lg shadow-md mb-20 mt-10">
         <div class="flex justify-end items-center">
             <!-- Date de publication -->
-            <span class="font-light text-gray-600">mar 10, 2019</span>
+            <span class="font-light text-gray-600"><?= $post_article->getDateObject()->format('D j M, Y'); ?></span>
         </div>
         <div class="mt-2">
             <!-- Titre du post -->
@@ -31,7 +32,7 @@
                     </svg>
 
                     <!-- Nom d'utilisateur -->
-                    <h1 class="text-gray-700 font-bold">Khatab wedaa</h1>
+                    <h1 class="text-gray-700 font-bold"><?= $post_article->getPostAuthor()->getPseudo(); ?></h1>
                 </a>
             </div>
         </div>

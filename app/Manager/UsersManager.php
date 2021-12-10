@@ -4,6 +4,7 @@ namespace App\Manager;
 
 use App\Entity\Users;
 use App\Fram\Factories\PDOFactory;
+use http\Client\Curl\User;
 
 class UsersManager extends BaseManager
 {
@@ -27,5 +28,14 @@ class UsersManager extends BaseManager
             return $query->fetchAll();
         }
         return [$query];
+    }
+
+    public function getUserById(int $id): Users
+    {
+        $req = $this->pdo->prepare('SELECT * FROM User WHERE id = :id');
+        $req->bindValue(':id', $id, \PDO::PARAM_INT);
+        $req->execute();
+        $req->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Users');
+        return $req->fetch();
     }
 }

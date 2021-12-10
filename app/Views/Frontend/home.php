@@ -14,6 +14,7 @@
 
             foreach ($articles as $article) :
             ?>
+                <?php /* @var $article \App\Entity\Post */ ?>
             <div class="flex flex-row mt-4 filter drop-shadow-lg">
                 <div class="flex w-full items-center justify-between bg-white dark:bg-gray-800 px-8 py-6 border-l-4 border-purple-500
 						dark:border-purple-300">
@@ -44,7 +45,7 @@
                                     <span
                                             class="ml-2 text-sm text-gray-600
                                                 dark:text-gray-300 capitalize">
-                                                Personne Toi
+                                                <?= $article->getPostAuthor()->getPseudo() ?>
                                             </span>
                                 </div>
 
@@ -62,7 +63,7 @@
                                     <span
                                             class="ml-2 text-sm text-gray-600
                                                 dark:text-gray-300 capitalize">
-                                                13 aug 2016 11:28
+                                                <?= $article->getDateObject()->format('j M Y G:i'); ?>
                                             </span>
                                 </div>
                             </div>

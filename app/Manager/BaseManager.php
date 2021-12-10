@@ -4,7 +4,7 @@ namespace App\Manager;
 
 abstract class BaseManager
 {
-    protected $pdo;
+    protected \PDO $pdo;
 
     public function __construct($pdo)
     {
