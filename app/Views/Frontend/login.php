@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="text-sm">
-                    <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">
+                    <a href="/create_account" class="font-medium text-indigo-600 hover:text-indigo-500">
                         Pas encore de compte ?
                     </a>
                 </div>
