@@ -32,8 +32,8 @@
                 </div>
                 <!-- Secondary Navbar items -->
                 <div class="hidden md:flex items-center space-x-3 ">
-                    <a href="/login" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-purple-500 hover:text-white transition duration-300">Se connecter</a>
-                    <a href="/create_account" class="py-2 px-2 font-medium text-white bg-purple-500 rounded hover:bg-purple-400 transition duration-300">Créer un compte</a>
+                    <a href="/login" class="py-2 px-2 font-medium text-gray-500 rounded hover:bg-purple-500 hover:text-white transition duration-300"><?php if($_SESSION['token']): echo "Se déconnecter"; else: echo 'Se connecter'; endif;  ?></a>
+                    <a href="/create_account" class="py-2 px-2 font-medium text-white bg-purple-500 rounded hover:bg-purple-400 transition duration-300"><?php if($_SESSION['token']): echo ""; else: echo 'Créer un compte'; endif; ?></a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">

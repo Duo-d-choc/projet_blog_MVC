@@ -25,21 +25,15 @@ class SecurityManager
         //$request->setFetchMode(\PDO::FETCH_CLASS, Users::class);
         $utilisateur = $request->fetch(\PDO::FETCH_ASSOC);
 
-        //var_dump($utilisateur);
-
-
         $pseudo = $utilisateur['pseudo'];
         $email = $utilisateur['email'];
         $mdp_hash = $utilisateur['password'];
-
-
-        //var_dump($pseudo);
-        //var_dump($email);
-        //var_dump($mdp_hash);
-
+        
         if($email && password_verify($data['password'], $mdp_hash) ){
             $_SESSION['token'] = true;
             $_SESSION['pseudo'] = "test";
+            header('Location: /');
+            exit;
         }else{
             $_SESSION['token'] = false;
             $_SESSION['pseudo'] = "";
