@@ -38,7 +38,8 @@ class PostManager extends BaseManager
 
     public function getPostById(int $id): Post
     {
-        $query = $this->pdo->prepare('SELECT * FROM Article WHERE id=:id');
+        $sql = 'SELECT * FROM Article WHERE id=:id';
+        $query = $this->pdo->prepare($sql);
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
         $query->setFetchMode(\PDO::FETCH_ASSOC);
@@ -63,7 +64,8 @@ class PostManager extends BaseManager
      */
     public function updatePost(Post $post)
     {
-        // TODO - getPostById($post->getId())
+        // TODO - update post
+        return true;
     }
 
     /**
@@ -72,6 +74,13 @@ class PostManager extends BaseManager
      */
     public function deletePostById(int $id): bool
     {
-        // TODO - Delete post
+        $sql = 'DELETE FROM `Article`
+                WHERE `id`=:id';
+        $query = $this->pdo->prepare($sql);
+        $query->bindValue(':id', $id, \PDO::PARAM_INT);
+        $query->execute();
+
+        return true;
     }
+
 }

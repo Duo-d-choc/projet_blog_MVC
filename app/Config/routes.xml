@@ -5,6 +5,9 @@
     <route path="" action="index" controller="PostController"/>
     <route path="article" action="article" controller="PostController" params="id"/>
     <route path="create_article" action="createArticle" controller="PostController"/>
+    <route path="delete_article" action="deleteArticle" controller="PostController" params="id"/>
+    <route path="delete_comment" action="deleteComment" controller="PostController" params="id"/>
+    <route path="create-comment" action="createComment" controller="PostController"/>
 
     <!-- admin -->
     <route path="account" action="account" controller="UsersController"/>

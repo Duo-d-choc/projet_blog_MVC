@@ -17,11 +17,11 @@
             <!-- SI ADMIN TODO -->
             <div class="flex">
                 <button type="button" class="border border-purple-500 text-purple-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-purple-600 focus:outline-none focus:shadow-outline">
-                    modifier
+                    Modifier
                 </button>
-                <button type="button" class="border border-red-500 text-red-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                    supprimer
-                </button>
+                <a href="/delete_article/<?= $post_article->getId(); ?>" type="button" class="border border-red-500 text-red-500 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">
+                    Supprimer
+                </a>
 
 
             </div>
@@ -68,11 +68,11 @@
 
                     <div class="flex mt-5">
                         <button type="button" class="border border-purple-500 text-purple-500 rounded-md px-2 py-1 m-2 mb-1 transition duration-500 ease select-none hover:text-white hover:bg-purple-600 focus:outline-none focus:shadow-outline">
-                            modifier
+                            Modifier
                         </button>
-                        <button type="button" class="border border-red-500 text-red-500 rounded-md px-2 py-1 m-2 mb-1 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">
-                            supprimer
-                        </button>
+                        <a href="/delete_comment/<?= $comment->getId(); ?>" type="button" class="border border-red-500 text-red-500 rounded-md px-2 py-1 m-2 mb-1 transition duration-500 ease select-none hover:text-white hover:bg-red-600 focus:outline-none focus:shadow-outline">
+                            Supprimer
+                        </a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
 
         <!-- Laisser un commentaire -->
 
-        <div class="bg-white p-2 pt-4 rounded shadow-lg mb-20">
+        <form action="create-comment" method="post" class="bg-white p-2 pt-4 rounded shadow-lg mb-20">
             <div class="flex ml-3 items-center">
                 <div class="flex flex-shrink-0 mr-3">
                     <svg class="mt-2 rounded-full w-8 h-8 sm:w-10 sm:h-10 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -92,28 +92,24 @@
                 </div>
                 <div>
                     <!-- Nom de l'utilisateur en connecté -->
-                    <h1 class="font-semibold">Utilisateur Toi</h1>
+                    <h1 class="font-semibold">Invité</h1>
                 </div>
 
             </div>
 
             <div class="mt-3 p-3 w-full">
-                <textarea rows="3" class="border p-2 rounded w-full" placeholder="Ajouter un commentaire..."></textarea>
+                <input type="textarea" name="content" rows="3" class="border p-2 rounded w-full" placeholder="Ajouter un commentaire...">
             </div>
+
+            <input hidden value="<?= $post_article->getId(); ?>" name="post_article">
 
             <div class="flex justify-between mx-3">
-                <button type="button" class="border border-black-500 text-black-500 rounded-md px-2 py-1 m-2 mb-1 transition duration-500 ease select-none hover:text-white hover:bg-gray-600 focus:outline-none focus:shadow-outline">
-                    Envoyer
-                </button>
-                <div>
-                    <div tabindex="0" class="dropdown">
-                        <div tabindex="0" class="cursor-pointer">...</div>
-
-                    </div>
-                </div>
+                <input type="submit" value="Envoyer" class="border border-black-500 text-black-500 rounded-md px-2 py-1 m-2 mb-1 transition duration-500 ease select-none hover:text-white hover:bg-gray-600 focus:outline-none focus:shadow-outline">
             </div>
 
-        </div>
+
+
+        </form>
 
 
     </div>
