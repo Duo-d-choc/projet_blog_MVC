@@ -4,7 +4,9 @@ namespace App\Manager;
 
 use App\Entity\Security;
 use App\Controller\SecurtityController;
+use App\Entity\Users;
 use App\Fram\Factories\PDOFactory;
+use http\Client\Curl\User;
 
 class SecurityManager
 {
@@ -13,25 +15,35 @@ class SecurityManager
     public function connexion(array $data, \PDO $pdo):void
     {
 
-        $sql = 'SELECT id, email, password FROM `User` WHERE email = :email';
+        $sql = 'SELECT * FROM `User` WHERE email = :email';
 
         $request = $pdo->prepare($sql);
         $response = $request->execute(array(
            'email' => htmlspecialchars($data['email'])
         ));
+        //Va directement compléter la class->Users
+        //$request->setFetchMode(\PDO::FETCH_CLASS, Users::class);
+        $utilisateur = $request->fetch(\PDO::FETCH_ASSOC);
 
-        $utilisateur = $request->fetchAll(\PDO::FETCH_ASSOC);
+        //var_dump($utilisateur);
+
 
         $pseudo = $utilisateur['pseudo'];
+        $email = $utilisateur['email'];
         $mdp_hash = $utilisateur['password'];
 
-        //$pseudo = $utilisateur[0]['pseudo'];
-        //$mdp_hash = $utilisateur[0]['password'];
 
-        if($pseudo && password_verify($data['password'], $mdp_hash) ){
+        //var_dump($pseudo);
+        //var_dump($email);
+        //var_dump($mdp_hash);
+
+        if($email && password_verify($data['password'], $mdp_hash) ){
             $_SESSION['token'] = true;
+            $_SESSION['pseudo'] = "test";
+        }else{
+            $_SESSION['token'] = false;
+            $_SESSION['pseudo'] = "";
         }
-        $_SESSION['token'] = false;
 
 
     }
