@@ -3,8 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
-use App\Entity\Users;
-use App\Fram\Utils\Flash;
+use App\Entity\Post;
 use App\Manager\CommentManager;
 use App\Manager\PostManager;
 use App\Fram\Factories\PDOFactory;
@@ -35,9 +34,25 @@ class PostController extends BaseController
     }
 
     public function executeCreateArticle (){
-        $manager = new PostManager(PDOFactory::getMysqlConnection());
-
         return $this->render('create_article.php', [], 'Créer article');
+    }
+
+    public function executeCreateArticleDb (){
+        $manager = new PostManager(PDOFactory::getMysqlConnection());
+        $article = new Post([
+            'id_user' => "1",
+            'date' => 'now',
+            'title' => $_POST['titre'],
+            'content' => $_POST['content']
+        ]);
+
+        $create_article = $manager->createPost($article);
+
+        if ($create_article){
+            return header('Location: /');
+        } else {
+            return "<script>alert('Article non créé')</script>";
+        }
     }
 
 

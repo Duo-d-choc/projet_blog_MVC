@@ -54,17 +54,17 @@ class PostManager extends BaseManager
      */
     public function createPost(Post $post)
     {
-        $id_user = $post->getId_user();
+        $id_user = intval($post->getId_user());
         $title = $post->getTitle();
         $content = $post->getContent();
 
         $sql = 'INSERT INTO Article(id_user, title, content) VALUES
-    (:id_user, :id_title, :content)';
+    (:id_user, :title, :content)';
         $query = $this->pdo->prepare($sql);
         $query->bindValue(':id_user', $id_user, \PDO::PARAM_INT);
-        $query->bindValue(':title', $id_title, \PDO::PARAM_STR);
-        $query->bindValue(':content', $content, \PDO::PARAM_INT);
-        $query->execute();
+        $query->bindValue(':title', $title, \PDO::PARAM_STR);
+        $query->bindValue(':content', $content, \PDO::PARAM_STR);
+        return $query->execute();
     }
 
     /**
