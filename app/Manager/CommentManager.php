@@ -32,13 +32,5 @@ class CommentManager extends BaseManager
         }
         return $result;
 
-        //$query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comment');
-
-        //if ($query) {
-        //    //var_dump($query->fetchAll());
-        //    //die();
-        //    return $query->fetchAll();
-        //}
-        //return [$query];
     }
 }

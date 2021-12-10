@@ -27,6 +27,8 @@ class PostManager extends BaseManager
             $query->execute();
         }
         $query->setFetchMode(\PDO::FETCH_ASSOC);
+        //var_dump($query->fetchAll());
+        //die();
         $result = [];
         foreach ($query->fetchAll() as $data) {
             $result[] = new Post($data);

@@ -18,7 +18,7 @@
                 <div class="flex space-x-7">
                     <div>
                         <!-- Website Logo -->
-                        <a href="#" class="flex items-center py-4 px-2">
+                        <a href="/" class="flex items-center py-4 px-2">
                             <img src="assets/img/blogger-logotype.png" alt="Logo" class="h-8 w-8 mr-2">
                             <span class="font-semibold text-gray-500 text-lg">Blog</span>
                         </a>
