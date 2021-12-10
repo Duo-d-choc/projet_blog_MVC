@@ -3,6 +3,7 @@
 namespace App\Manager;
 
 use App\Entity\Comment;
+use App\Entity\Post;
 use App\Manager\BaseManager;
 
 class CommentManager extends BaseManager
@@ -24,13 +25,20 @@ class CommentManager extends BaseManager
         $query->bindValue(':id', $id, \PDO::PARAM_INT);
         $query->execute();
 
-        $query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comment');
-
-        if ($query) {
-            //var_dump($query->fetchAll());
-            //die();
-            return $query->fetchAll();
+        $query->setFetchMode(\PDO::FETCH_ASSOC);
+        $result = [];
+        foreach ($query->fetchAll() as $data) {
+            $result[] = new Comment($data);
         }
-        return [$query];
+        return $result;
+
+        //$query->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, 'App\Entity\Comment');
+
+        //if ($query) {
+        //    //var_dump($query->fetchAll());
+        //    //die();
+        //    return $query->fetchAll();
+        //}
+        //return [$query];
     }
 }
