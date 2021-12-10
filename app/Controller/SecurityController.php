@@ -27,8 +27,10 @@ class SecurityController extends BaseController
     public function executeCreateAccount (){
         $pdo = PDOFactory::getMysqlConnection();
 
-        SecurityManager::createAccount($_POST);
-        var_dump($_POST);
+        $recup = new SecurityManager();
+        $recup->createAccount($_POST, $pdo);
+        //var_dump($_POST);
+
 
         $this->render('create_account.php', [], 'Créer un compte');
     }

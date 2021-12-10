@@ -2,8 +2,17 @@
 
 namespace App\Manager;
 
+use App\Entity\Security;
+use App\Controller\SecurtityController;
+use App\Fram\Factories\PDOFactory;
+
 class SecurityManager
 {
+    private \PDO $pdo;
+    public function __construct()
+    {
+        $this->pdo = PDOFactory::getMysqlConnection();
+    }
 
     public static function connexion(array $pdo): bool
     {
@@ -18,33 +27,33 @@ class SecurityManager
             $utilisateur = $request->fetchAll(PDO::FETCH_ASSOC);
 
             $pseudo = $utilisateur[0]['pseudo'];
-            $mdp_hash = $utilisateur[0]['mot_de_passe'];
+            $mdp_hash = $utilisateur[0]['password'];
 
-            if($pseudo && password_verify($_POST['mdp'], $mdp_hash) ){
+            if($pseudo && password_verify($_POST['password'], $mdp_hash) ){
                 return true;
             }
             return false;
 
     }
 
-    public function createAccount(array $data){
+    public function createAccount(array $data, \PDO $pdo){
+        var_dump($data);
 
-        $sql = 'INSERT INTO `User` (pseudo, email, password) VALUES (:pseudo, :email, :password, "standart")';
+        $sql = 'INSERT INTO `User` (pseudo, email, password, status) VALUES (:pseudo, :email, :password, "standart")';
+
         $request = $pdo->prepare($sql);
 
-        if( ( isset($data['pseudo']) && $data['pseudo'] != NULL )  &&  ( isset($data['password']) && $data['password'] != NULL ) ){
+        if( ( isset($data['pseudo']) && $data['pseudo'] != NULL )  &&  ( isset($data['password']) && $data['password'] != NULL ) &&  ( isset($data['email']) && $data['email'] != NULL )){
 
             $hash = password_hash( $data['password'], PASSWORD_DEFAULT);
             var_dump($hash);
             $request->execute(array(
                 'pseudo' => htmlspecialchars($data['pseudo']),
                 'email' => htmlspecialchars($data['email']),
-                'mdp' =>  htmlspecialchars($hash)
+                'password' =>  htmlspecialchars($hash)
                 ));
-            return true;
 
         }
-        return false;
 
 
 
@@ -57,23 +66,6 @@ class SecurityManager
 
 
 
-
-        $sql = 'INSERT INTO `User` (pseudo, email, password) VALUES (:pseudo, :email, :password)';
-    return true;
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

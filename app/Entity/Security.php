@@ -5,11 +5,27 @@ namespace App\Entity;
 
 class Security
 {
+    private string $pseudo;
     private string $email;
     private string $password;
     private string $statut;
 
 
+    /**
+     * @return string
+     */
+    public function getPseudo(): string
+    {
+        return $this->pseudo;
+    }
+
+    /**
+     * @param string $pseudo
+     */
+    public function setPseudo(string $pseudo): void
+    {
+        $this->pseudo = $pseudo;
+    }
     /**
      * @return string
      */
