@@ -19,22 +19,16 @@ class SecurityController extends BaseController
 
         if ($_SESSION['token']){
 
-
             $this->render('login.php', [], 'Connexion');
         }
-
-
-
 
     }
 
     public function executeCreateAccount (){
+        $pdo = PDOFactory::getMysqlConnection();
 
         SecurityManager::createAccount($_POST);
         var_dump($_POST);
-
-
-
 
         $this->render('create_account.php', [], 'Créer un compte');
     }
